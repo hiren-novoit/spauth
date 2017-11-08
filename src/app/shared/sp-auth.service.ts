@@ -11,17 +11,12 @@ export class SpAuthService {
     spSiteUrl: ''
   };
 
-  private _accessToken: string;
-
   constructor(private _http: HttpClient) { 
   }
 
   async getAccessToken(): Promise<string> {
     try{
       console.log('getAccessToken works.');
-      if (this._accessToken) {
-        return this._accessToken;
-      }
 
       let response = await this.generateAuthResponse();
 
