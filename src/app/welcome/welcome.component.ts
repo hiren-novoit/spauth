@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { SpdataService } from './../shared/spdata.service';
+
 import { SpAuthService } from './../shared/sp-auth.service';
+import { SpdataService } from './../shared/spdata.service';
 
 @Component({
   selector: 'app-welcome',
@@ -13,10 +14,8 @@ export class WelcomeComponent implements OnInit {
             private _spAuthService: SpAuthService) { }
 
   ngOnInit() {
-    this._spAuthService.getAccessToken().then((token: any) => {
-      console.log(token);
-    }).catch((error: any) => {
-      console.log(error);
-    });
+    this._spDataService.getLocations()
+                        .then((data) => console.log(data))
+                        .catch(error => console.log(error)) ;
   }
 }
